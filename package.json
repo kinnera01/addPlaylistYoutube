@@ -1,0 +1,25 @@
+{
+  "name": "addPlaylistYoutube",
+  "version": "1.0.0",
+  "description": "Create a playlist or add songs to existing playlist using JS",
+  "main": "auth.js",
+  "dependencies": {
+    "require": "^2.4.20",
+    "uglify-js": "^3.3.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kinnera01/addPlaylistYoutube.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kinnera01/addPlaylistYoutube/issues"
+  },
+  "homepage": "https://github.com/kinnera01/addPlaylistYoutube#readme"
+}

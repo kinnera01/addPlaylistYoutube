@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Playlist Updates</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+<style>
+  body{
+    padding: 50px;
+    background-color:aquamarine;
+  }
+</style>
+<body>
+  <div>
+    <h1 class="text-center">Upload/Create a Youtube Playlist </h1>
+  </div>
+  </br>
+  <div id="login-container" class="pre-auth">
+    <h4>This application requires access to your YouTube account. Please
+    <a href="#" id="login-link">authorize</a> to continue.</h4>
+  </div>
+  <form>
+    <div id="buttons">
+      <div class="input-group">
+        <span class="input-group-addon">Title</span>
+        <input id="Title" type="text" class="form-control" name="title" placeholder="Give me a name..">
+      </div>
+    </br>
+      <div class="input-group">
+        <span class="input-group-addon">Playlist Description</span>
+        <input id="Desciption" class="form-control" name="description" placeholder='Please be Speicific..' type="text" />
+      </div>
+    </br>
+      <button type="button" class="btn btn-primary pull-right" id="playlist-button" disabled onclick="createPlaylist()">Create a new Playlist</button>
+  </br>
+    </br>
+      <div class="input-group">
+        <span class="input-group-addon">Current Playlist Id</span>
+        <input id="playlist-id" class="form-control"  name='playid' value='' placeholder='Enter your existing ID or Create a new playlist' type="text" />
+      </div>
+    </br>
+      <div class="input-group">
+        <span class="input-group-addon">Video Id</span>
+        <input id="video-id" class="form-control" name='videoid' value='GZG9G5txtaE' type="text" />
+      </div>
+    </br>
+      <button type="button" class="btn btn-primary pull-right" onclick="addVideoToPlaylist()">Add to current playlist</button>
+    </div>
+  </form>
+  <h2>Playlist:  </h2>
+  <span id="playlist-title"></span>
+  <p id="playlist-description"></p>
+  <p id="playlist-Id"></p>
+  <div id="playlist-container">
+    <h5>
+    <span id="status">No Videos</span></h5>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="playlist_updates.js"></script>
+  <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+</body>
+
+</html>

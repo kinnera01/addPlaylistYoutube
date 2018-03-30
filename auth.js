@@ -53,6 +53,7 @@ client.search(strQuery, function(err, result) {
   docs.forEach(element => {
     youtubeids.push(element.youtubeId);
   });
+  console.log(youtubeids)
   return youtubeids;
 });
 

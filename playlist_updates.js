@@ -34,13 +34,7 @@ function createPlaylist() {
     }
   });
   var query=year;
-  var url="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+query+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
-  $.ajax({
-    url: url,
-    method: "GET"
-  }).done(function (response) {
-    console.log(response)
-  })
+  
   request.execute(function(response) {
     console.log(response);
     var result = response.result;
@@ -56,6 +50,17 @@ function createPlaylist() {
       $("#status").html("Could not create playlist");
     }
   });
+}
+function getyoutubeids(){
+  $("#year").empty();
+  var year=$("#year").val();
+  var url="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
+  $.ajax({
+    url: url,
+    method: "GET"
+  }).done(function (response) {
+    console.log(response)
+  })
 }
 // var videoId=["ZG1Su0QwPYs","_JVghQCWnRI","Y-xZIECiTwk"]
 // Add a video ID specified in the form to the playlist.

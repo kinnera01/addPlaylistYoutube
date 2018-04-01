@@ -1,5 +1,3 @@
-// Define some variables used to remember state.
-// var songsdata = require("../data/youtubeapi");
 var playlistId, channelId;
 var year;
 // console.log("ids:"+youtubeids);
@@ -7,7 +5,6 @@ var year;
 function handleAPILoaded() {
   enableForm();
 }
-
 // Enable the form for creating a playlist.
 function enableForm() {
   $("#playlist-button").attr("disabled", false);
@@ -31,10 +28,7 @@ function createPlaylist() {
       }
     }
   });
-
-  
   request.execute(function(response) {
-    console.log(response);
     var result = response.result;
     console.log(result);
     if (result) {
@@ -48,34 +42,30 @@ function createPlaylist() {
   });
 }
 
-function getyoutubeids(){
-console.log("HEY I AM IN YIDS")
-  // $("#year").empty();
-  var year=$("#year").val();
-  // console.log(year);
-  var queryurl="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
-  jQuery.support.cors = true;
-    $.getJSON(queryurl).done(function(res){
-    //   console.log("HEY")
-    // console.log("i am response"+res.response.docs)
-    var docs = res.response.docs;
-    console.log(docs)
-      docs.forEach(element => {
-        // youtubeids.push(element.youtubeId);
-        console.log(element.youtubeId);
-        addToPlaylist(element.youtubeId);
-      });
-    });
-
-
 // var videoId=["ZG1Su0QwPYs","_JVghQCWnRI","Y-xZIECiTwk"]
 // Add a video ID specified in the form to the playlist.
-function addVideoToPlaylist() {
-  // addToPlaylist($('#playlist-id').val());
+var addVideoToPlaylist=function() {
   getyoutubeids();
   //addToPlaylist($("#video-id").val());
 }
-
+function getyoutubeids(){
+  console.log("HEY I AM IN YIDS")
+    // $("#year").empty();
+    var year=$("#year").val();
+    // console.log(year);
+    var queryurl="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
+    jQuery.support.cors = true;
+      $.getJSON(queryurl).done(function(res){
+      //   console.log("HEY")
+      // console.log("i am response"+res.response.docs)
+      var docs = res.response.docs;
+      console.log(docs)
+        docs.forEach(element => {
+          // youtubeids.push(element.youtubeId);
+          console.log(element.youtubeId);
+          addToPlaylist(element.youtubeId);
+        });
+      });
 // Add a video to a playlist. The "startPos" and "endPos" values let you
 // start and stop the video at specific times when the video is played as
 // part of the playlist. However, these values are not set in this example.

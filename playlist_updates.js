@@ -37,6 +37,7 @@ function createPlaylist() {
   var url="https://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+query+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
   var youtubeIds= $.getJSON(url);
   console.log(url)
+  console.log(youtubeIds)
   console.log(request);
   request.execute(function(response) {
     console.log(response);

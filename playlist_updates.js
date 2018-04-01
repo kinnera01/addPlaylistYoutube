@@ -50,6 +50,7 @@ function createPlaylist() {
   });
 }
 function on_data(data) {
+  console.log("I AM IN DATAA")
   console.log(data)
   // $('#results').empty();
 

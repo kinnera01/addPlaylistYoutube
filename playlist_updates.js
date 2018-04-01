@@ -54,7 +54,7 @@ console.log("HEY I AM IN YIDS")
   // $("#year").empty();
   var year=$("#year").val();
   console.log(year);
-  var url="//aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
+  var url="//www.aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
   console.log(url)
   $.ajax({
     url: url,

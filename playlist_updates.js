@@ -34,7 +34,7 @@ function createPlaylist() {
     }
   });
   var query=year;
-  var url="https://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+query+'&sort=viewcountRatedesc&start=0&rows=50&wt=json&indent=true';
+  var url="https://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+query+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
   var youtubeIds= $.getJSON(url);
   console.log(url)
   console.log(request);

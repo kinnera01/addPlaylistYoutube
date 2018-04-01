@@ -52,6 +52,7 @@ function createPlaylist() {
   });
 }
 function getyoutubeids(){
+console.log("HEY I AM IN YIDS")
   $("#year").empty();
   var year=$("#year").val();
   var url="https://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
@@ -67,7 +68,7 @@ function getyoutubeids(){
 function addVideoToPlaylist() {
   // addToPlaylist($('#playlist-id').val());
   getyoutubeids();
-  addToPlaylist($("#video-id").val());
+  //addToPlaylist($("#video-id").val());
 }
 
 // Add a video to a playlist. The "startPos" and "endPos" values let you

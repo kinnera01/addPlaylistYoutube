@@ -2,7 +2,7 @@
 // var songsdata = require("../data/youtubeapi");
 var playlistId, channelId;
 
-console.log("ids:"+youtubeids);
+// console.log("ids:"+youtubeids);
 // After the API loads, call a function to enable the playlist creation form.
 function handleAPILoaded() {
   enableForm();
@@ -34,11 +34,13 @@ function createPlaylist() {
     }
   });
   var query=year;
-  var url="https://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+query+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
-  var youtubeIds= $.getJSON(url);
-  console.log(url)
-  console.log(youtubeIds)
-  console.log(request);
+  var url="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+query+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
+  $.ajax({
+    url: url,
+    method: "GET"
+  }).done(function (response) {
+    console.log(response)
+  })
   request.execute(function(response) {
     console.log(response);
     var result = response.result;

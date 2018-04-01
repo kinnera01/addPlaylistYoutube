@@ -72,6 +72,7 @@ console.log("HEY I AM IN YIDS")
     url: queryurl,
     method: "GET"
   }).done(function (response) {
+    console.log("HEY")
  console.log(response)
  })
 }

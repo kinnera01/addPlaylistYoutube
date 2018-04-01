@@ -2,13 +2,13 @@
 // at {{ https://cloud.google.com/console }}.
 // If you run this code from a server other than http://localhost,
 // you need to register your own client ID.
-var SolrNode = require("solr-node");
-var client = new SolrNode({
-  host: "aurora.cs.rutgers.edu",
-  port: "8181",
-  core: "discogs_data_test",
-  protocol: "http"
-});
+// var SolrNode = require("solr-node");
+// var client = new SolrNode({
+//   host: "aurora.cs.rutgers.edu",
+//   port: "8181",
+//   core: "discogs_data_test",
+//   protocol: "http"
+// });
 var OAUTH2_CLIENT_ID ='144598218649-l78ovdbcde6bc30j11ac8bmjeqtbbuuj.apps.googleusercontent.com';
 var OAUTH2_SCOPES = [
   'https://www.googleapis.com/auth/youtube'
@@ -34,28 +34,29 @@ function checkAuth() {
 }
 
 
-var youtubeids = [];
-const express = require("express");
-const app = express();
-var strQuery = client
-  .query()
-  .q({ releaseDate: "2016" })
-  .sort({ viewcountRate: "desc" })
-  .start(0)
-  .rows(20);
-client.search(strQuery, function(err, result) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  // console.log("Response:", result.response.docs);
-  var docs = result.response.docs;
-  docs.forEach(element => {
-    youtubeids.push(element.youtubeId);
-  });
-  console.log(youtubeids);
-  return youtubeids;
-});
+// var youtubeids = [];
+// const express = require("express");
+// const app = express();
+// var strQuery = client
+//   .query()
+//   .q({ releaseDate: "2016" })
+//   .sort({ viewcountRate: "desc" })
+//   .start(0)
+//   .rows(20);
+//   console.log(strQuery);
+// client.search(strQuery, function(err, result) {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//   // console.log("Response:", result.response.docs);
+//   var docs = result.response.docs;
+//   docs.forEach(element => {
+//     youtubeids.push(element.youtubeId);
+//   });
+//   console.log(youtubeids);
+//   return youtubeids;
+// });
 
 // Handle the result of a gapi.auth.authorize() call.
 function handleAuthResult(authResult) {
@@ -86,6 +87,5 @@ function loadAPIClientInterfaces() {
     handleAPILoaded();
   });
 }
-app.listen(4000, function() {
-  console.log("Example app listening on port 4000!");
-});
+// http://aurora.cs.rutgers.edu:8181/solr/#/discogs_data_test
+// http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=*%3A*&wt=json&indent=true

@@ -1,6 +1,7 @@
 // Define some variables used to remember state.
 var songsdata = require("../data/youtubeapi");
 var playlistId, channelId;
+
 console.log("ids:"+youtubeids);
 // After the API loads, call a function to enable the playlist creation form.
 function handleAPILoaded() {
@@ -16,8 +17,10 @@ function enableForm() {
 function createPlaylist() {
   var title = $("#Title").val();
   var description = $("#Desciption").val();
+  var year=$("#year").val()
   console.log(title);
   console.log(description);
+  console.log(year);
   var request = gapi.client.youtube.playlists.insert({
     part: "snippet,status",
     resource: {
@@ -30,6 +33,10 @@ function createPlaylist() {
       }
     }
   });
+  var query=year;
+  var url="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+query+'&sort=viewcountRate desc&start=0&rows=50&wt=json&indent=true';
+  var youtubeIds= $.getJSON(url);
+  console.log(url)
   console.log(request);
   request.execute(function(response) {
     console.log(response);
@@ -103,3 +110,58 @@ function addTheseVideosToPlaylist() {
     }, 3000);
   }
 }
+// var url="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=*%3A*"+query+'&start=0&rows=50&wt=json&indent=true';
+// //solr
+// function on_data(data) {
+//   $('#results').empty();
+//   var docs = data.response.docs;
+//   $.each(docs, function(i, item) {
+//       $('#results').prepend($('<div>' + item.name + '</div>'));
+//   });
+
+//   var total = 'Found ' + docs.length + ' results';
+//   $('#results').prepend('<div>' + total + '</div>');
+// }
+
+// function on_search() {
+//   var query = $('#query').val();
+//   if (query.length == 0) {
+//       return;
+//   }
+
+//   var url='http://xxxx.xxx.xxxx.xxx/xxx_xxx/core0/selectcore0/select/?q='+query+'&version=2.2&start=0&rows=50&indent=on&wt=json&callback=?&json.wrf=on_data';
+//   $.getJSON(url);
+// }
+
+// function on_ready() {
+//   $('#search').click(on_search);
+//   /* Hook enter to search */
+//   $('body').keypress(function(e) {
+//       if (e.keyCode == '13') {
+//           on_search();
+//       }
+//   });
+// }
+// // var youtubeids = [];
+// // const express = require("express");
+// // const app = express();
+// // var strQuery = client
+// //   .query()
+// //   .q({ releaseDate: "2016" })
+// //   .sort({ viewcountRate: "desc" })
+// //   .start(0)
+// //   .rows(20);
+// // client.search(strQuery, function(err, result) {
+// //   if (err) {
+// //     console.log(err);
+// //     return;
+// //   }
+// //   // console.log("Response:", result.response.docs);
+// //   var docs = result.response.docs;
+// //   docs.forEach(element => {
+// //     youtubeids.push(element.youtubeId);
+// //   });
+// //   console.log(youtubeids);
+// //   return youtubeids;
+// // });
+// $(document).ready(on_ready);

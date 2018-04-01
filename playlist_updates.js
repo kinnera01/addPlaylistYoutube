@@ -1,7 +1,7 @@
 // Define some variables used to remember state.
 // var songsdata = require("../data/youtubeapi");
 var playlistId, channelId;
-
+var year;
 // console.log("ids:"+youtubeids);
 // After the API loads, call a function to enable the playlist creation form.
 function handleAPILoaded() {
@@ -17,10 +17,8 @@ function enableForm() {
 function createPlaylist() {
   var title = $("#Title").val();
   var description = $("#Desciption").val();
-  var year=$("#year").val()
   console.log(title);
   console.log(description);
-  console.log(year);
   var request = gapi.client.youtube.playlists.insert({
     part: "snippet,status",
     resource: {
@@ -33,7 +31,6 @@ function createPlaylist() {
       }
     }
   });
-  var query=year;
   
   request.execute(function(response) {
     console.log(response);
@@ -53,7 +50,7 @@ function createPlaylist() {
 }
 function getyoutubeids(){
 console.log("HEY I AM IN YIDS")
-  $("#year").empty();
+  // $("#year").empty();
   var year=$("#year").val();
   var url="//aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
   $.ajax({

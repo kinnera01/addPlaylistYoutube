@@ -68,9 +68,11 @@ console.log("HEY I AM IN YIDS")
   var year=$("#year").val();
   console.log(year);
   var queryurl="//aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
+  jQuery.support.cors = true;
   $.ajax({
     url: queryurl,
-    method: "GET"
+  dataType: 'jsonp',
+    method: "GET",
   }).done(function (response) {
     console.log("HEY")
  console.log(response)

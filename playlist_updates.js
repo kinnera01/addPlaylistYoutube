@@ -49,6 +49,18 @@ function createPlaylist() {
     }
   });
 }
+function on_data(data) {
+  console.log(data)
+  // $('#results').empty();
+
+  // var docs = data.response.docs;
+  // $.each(docs, function(i, item) {
+  //     $('#results').prepend($('<div>' + item.name + '</div>'));
+  // });
+
+  // var total = 'Found ' + docs.length + ' results';
+  // $('#results').prepend('<div>' + total + '</div>');
+}
 function getyoutubeids(){
 console.log("HEY I AM IN YIDS")
   // $("#year").empty();
@@ -56,7 +68,7 @@ console.log("HEY I AM IN YIDS")
   console.log(year);
   var url="//aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
   console.log(url)
-  $.getJSON(url);
+  $.getJSON(url,on_data);
   // $.ajax({
   //   url: url,
   //   method: "GET"
@@ -64,6 +76,7 @@ console.log("HEY I AM IN YIDS")
   //   console.log(response)
   // })
 }
+
 // var videoId=["ZG1Su0QwPYs","_JVghQCWnRI","Y-xZIECiTwk"]
 // Add a video ID specified in the form to the playlist.
 function addVideoToPlaylist() {

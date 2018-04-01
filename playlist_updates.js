@@ -1,4 +1,5 @@
 // Define some variables used to remember state.
+var songsdata = require("../data/youtubeapi");
 var playlistId, channelId;
 console.log("ids:"+youtubeids);
 // After the API loads, call a function to enable the playlist creation form.

@@ -42,42 +42,30 @@ function createPlaylist() {
       // console.log(playlistId)
       $("#playlist-id").val(playlistId);
       $("#playlist-Id").html(result.id);
-      // $('#playlist-title').html(result.snippet.title);
-      // $('#playlist-description').html(result.snippet.description);
     } else {
       $("#status").html("Could not create playlist");
     }
   });
 }
-function on_data(data) {
-  console.log("I AM IN DATAA")
-  console.log(data)
-  // $('#results').empty();
 
-  // var docs = data.response.docs;
-  // $.each(docs, function(i, item) {
-  //     $('#results').prepend($('<div>' + item.name + '</div>'));
-  // });
-
-  // var total = 'Found ' + docs.length + ' results';
-  // $('#results').prepend('<div>' + total + '</div>');
-}
 function getyoutubeids(){
 console.log("HEY I AM IN YIDS")
   // $("#year").empty();
   var year=$("#year").val();
-  console.log(year);
-  var queryurl="//aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
+  // console.log(year);
+  var queryurl="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
   jQuery.support.cors = true;
-  $.ajax({
-    url: queryurl,
-  dataType: 'jsonp',
-    method: "GET",
-  }).done(function (response) {
-    console.log("HEY")
- console.log(response)
- })
-}
+    $.getJSON(url).done(function(res){
+    //   console.log("HEY")
+    // console.log("i am response"+res.response.docs)
+    var docs = res.response.docs;
+    console.log(docs)
+      docs.forEach(element => {
+        // youtubeids.push(element.youtubeId);
+        console.log(element);
+      });
+    });
+
 
 // var videoId=["ZG1Su0QwPYs","_JVghQCWnRI","Y-xZIECiTwk"]
 // Add a video ID specified in the form to the playlist.
@@ -136,58 +124,4 @@ function addTheseVideosToPlaylist() {
     }, 3000);
   }
 }
-// var url="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=*%3A*"+query+'&start=0&rows=50&wt=json&indent=true';
-// //solr
-// function on_data(data) {
-//   $('#results').empty();
-//   var docs = data.response.docs;
-//   $.each(docs, function(i, item) {
-//       $('#results').prepend($('<div>' + item.name + '</div>'));
-//   });
-
-//   var total = 'Found ' + docs.length + ' results';
-//   $('#results').prepend('<div>' + total + '</div>');
-// }
-
-// function on_search() {
-//   var query = $('#query').val();
-//   if (query.length == 0) {
-//       return;
-//   }
-
-//   var url='http://xxxx.xxx.xxxx.xxx/xxx_xxx/core0/selectcore0/select/?q='+query+'&version=2.2&start=0&rows=50&indent=on&wt=json&callback=?&json.wrf=on_data';
-//   $.getJSON(url);
-// }
-
-// function on_ready() {
-//   $('#search').click(on_search);
-//   /* Hook enter to search */
-//   $('body').keypress(function(e) {
-//       if (e.keyCode == '13') {
-//           on_search();
-//       }
-//   });
-// }
-// // var youtubeids = [];
-// // const express = require("express");
-// // const app = express();
-// // var strQuery = client
-// //   .query()
-// //   .q({ releaseDate: "2016" })
-// //   .sort({ viewcountRate: "desc" })
-// //   .start(0)
-// //   .rows(20);
-// // client.search(strQuery, function(err, result) {
-// //   if (err) {
-// //     console.log(err);
-// //     return;
-// //   }
-// //   // console.log("Response:", result.response.docs);
-// //   var docs = result.response.docs;
-// //   docs.forEach(element => {
-// //     youtubeids.push(element.youtubeId);
-// //   });
-// //   console.log(youtubeids);
-// //   return youtubeids;
-// // });
-// $(document).ready(on_ready);
+}

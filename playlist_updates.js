@@ -55,14 +55,15 @@ console.log("HEY I AM IN YIDS")
   // console.log(year);
   var queryurl="http://aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true';
   jQuery.support.cors = true;
-    $.getJSON(url).done(function(res){
+    $.getJSON(queryurl).done(function(res){
     //   console.log("HEY")
     // console.log("i am response"+res.response.docs)
     var docs = res.response.docs;
     console.log(docs)
       docs.forEach(element => {
         // youtubeids.push(element.youtubeId);
-        console.log(element);
+        console.log(element.youtubeId);
+        addToPlaylist(element.youtubeId);
       });
     });
 

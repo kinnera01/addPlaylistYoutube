@@ -53,8 +53,8 @@ function getyoutubeids(){
     // $("#year").empty();
     var year=$("#year").val();
     // console.log(year);
-    
-    var queryurl="https://aurora.cs.rutgers.edu:8181/solr/#/discogs_data_test/query/select?q=releaseDate:"+year+"&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true";
+    //aurora.cs.rutgers.edu:8181/solr/discogs_data_test/select?q=releaseDate:"+year+'&sort=viewcountRate%20desc&start=0&rows=50&wt=json&indent=true
+    var queryurl="//aurora.cs.rutgers.edu:8181/solr/#/discogs_data_test/query/select?q=releaseDate:"+year+"&sort=viewcountRate=desc&start=0&rows=50&wt=json&indent=true";
     jQuery.support.cors = true;
       $.getJSON(queryurl).done(function(res){
       //   console.log("HEY")
